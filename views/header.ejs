@@ -1,0 +1,15 @@
+<div class="header">
+    <div class="title">
+        <img src="/drive-icon.png" alt="">
+        <h1>YourDrive</h1>
+    </div>
+    <div class="links">
+        <a href="/">Home</a>
+        <% if(!locals.currentUser) {%>
+            <a href="login">Log In</a>
+            <a href="signup">Sign Up</a>
+            <%} else {%>
+                <a href="logout">Log Out</a>
+                <%}%>
+    </div>
+</div>
