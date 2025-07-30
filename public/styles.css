@@ -12,7 +12,7 @@ body {
     box-sizing: border-box;
 }
 
-a{
+a {
     text-decoration: none;
     color: inherit;
 }
@@ -49,11 +49,11 @@ a{
         justify-content: center;
         align-items: center;
 
-        img{
+        img {
             width: 60px;
         }
 
-        h1{
+        h1 {
             margin: 0;
         }
     }
@@ -96,12 +96,13 @@ a{
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
             gap: 20px;
         }
 
-        input, textarea {
+        input,
+        textarea {
             resize: none;
-            width: 80%;
             background-color: var(--primary-color);
             border: 1px dotted rgb(233, 118, 118);
             outline: none;
@@ -110,7 +111,7 @@ a{
             font: inherit;
         }
 
-        textarea{
+        textarea {
             min-height: 80px;
         }
 
@@ -125,7 +126,7 @@ a{
     }
 }
 
-.content{
+.content {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -134,10 +135,28 @@ a{
     gap: 20px;
 }
 
-.add{
+.link-div {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    .link {
+        display: flex;
+        justify-content: center;        
+        align-items: center;
+        box-sizing: border-box;
+        text-decoration: underline;
+        gap: 10px;
+        padding: 10px;
+        background-color: var(--secondary-color);
+        border-radius: 10px;
+    }
+}
+
+.add {
     display: flex;
     width: 180px;
-    border: none;   
+    border: none;
     border-radius: 20px;
     justify-content: center;
     align-items: center;
@@ -148,14 +167,14 @@ a{
     font-size: 18px;
 }
 
-.folders{
+.folders {
     display: flex;
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
     box-sizing: border-box;
 
-    .folder{
+    .folder {
         display: flex;
         flex-direction: column;
         padding: 20px;
@@ -167,40 +186,40 @@ a{
         font-size: 20px;
         min-width: 220px;
 
-        .name{
+        .name {
             display: flex;
             font-weight: 500;
         }
 
-        .info{
+        .info {
             display: flex;
             gap: 10px;
             font-size: 16px;
         }
     }
 
-    .folder:hover{
+    .folder:hover {
         background-color: #A8D6FF;
     }
 
-    .icon > svg{
+    .icon>svg {
         min-width: 40px;
         height: auto;
     }
 
-    .icon-actions{
+    .icon-actions {
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        .actions{
+        .actions {
             display: flex;
             gap: 15px;
         }
     }
 }
 
-.files{
+.files {
     display: grid;
     flex-direction: column;
     box-sizing: border-box;
@@ -210,7 +229,8 @@ a{
     padding: 10px;
     gap: 20px;
 
-    .heading, .file{
+    .heading,
+    .file {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         width: 100%;
@@ -218,39 +238,40 @@ a{
         font-size: 18px;
         font-weight: 500;
         box-sizing: border-box;
-        border-bottom: 1px dotted var(--fore-color);    
-        
-        .date{
+        border-bottom: 1px dotted var(--fore-color);
+
+        .date {
             justify-self: center;
         }
 
-        .author{
+        .author {
             justify-self: end;
         }
     }
 
-    .heading{
+    .heading {
         padding: 15px;
     }
 
-    .file{
+    .file {
         font: inherit;
         align-items: center;
         padding: 15px;
-        
-        .name, .author{
+
+        .name,
+        .author {
             display: flex;
             align-items: center;
             gap: 15px;
-        }        
+        }
 
-        .name{
+        .name {
             justify-content: start;
         }
     }
 }
 
-.file-card{
+.file-card {
     align-self: center;
     display: flex;
     flex-direction: column;
@@ -263,7 +284,7 @@ a{
     gap: 15px;
     box-sizing: border-box;
 
-    .icon{
+    .icon {
         display: flex;
         width: 100%;
         justify-content: center;
@@ -278,30 +299,45 @@ a{
         }
     }
 
-    .info{
+    .info {
         display: flex;
         width: 100%;
         justify-content: space-between;
         align-items: center;
 
-        .date{
+        .date {
             font-size: 14px;
         }
 
-        .size{
+        .size {
             font-weight: 500;
         }
     }
 
-    .name-actions{
+    .name-actions {
         display: flex;
         width: 100%;
         justify-content: space-between;
 
-        .name, .actions {
+        .name,
+        .actions {
             display: flex;
             align-items: center;
             gap: 15px;
         }
     }
+}
+
+/* removing arrows from number input */
+
+/* For WebKit browsers (Chrome, Safari, Edge, Opera) */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Mozilla Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
 }

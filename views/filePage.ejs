@@ -57,6 +57,7 @@
                                     <path d="M19 21H5" />
                                 </svg>
                             </a>
+                            <% if(locals.currentUser && currentUser.id === file.folder.user_id) {%>
                             <a href="delete/<%=file.id%>">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -66,6 +67,7 @@
                                     <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
                                 </svg>
                             </a>
+                            <%}%>
                         </div>
                     </div>
                 </div>

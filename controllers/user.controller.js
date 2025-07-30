@@ -22,7 +22,7 @@ const validateUser = [
 ];
 
 async function displayHomepage(req, res) {
-    const [folders, folderSums] = await getAllFolders();
+    const [folders, folderSums] = await getAllFolders(req.user?.id);
 
     folders.map(folder => {
         let folderSum = folderSums.find(folderSum => folderSum.folder_id === folder.id);

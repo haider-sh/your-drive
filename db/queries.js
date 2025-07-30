@@ -49,7 +49,7 @@ async function deleteUserFile(id) {
     return file;
 }
 
-async function getAllFolders() {
+async function getAllFolders(id) {
     const folders = await prisma.folder.findMany({
         include: {
             _count: {
@@ -57,6 +57,9 @@ async function getAllFolders() {
                     files: true
                 }
             }
+        },        
+        where : {
+            user_id: id
         }
     });
     const folderSums = await prisma.file.groupBy({
@@ -73,7 +76,11 @@ async function getAllFolders() {
 async function getFilesByFolder(folderId) {
     const files = await prisma.file.findMany({
         include: {
-            folder: true
+            folder: {
+                include: {
+                    user: true
+                }
+            }
         },
         where: {
             folder_id: folderId
@@ -87,6 +94,9 @@ async function getFileById(id) {
     const file = await prisma.file.findFirst({
         where: {
             id: id
+        },
+        include: {
+            folder: true
         }
     });
 
@@ -148,6 +158,45 @@ async function getUserByUsername(username) {
     return user;
 }
 
+async function createSharedFolder(folder_id, id, duration){
+    const shared = await prisma.shared.create({
+        data : {
+            folder_id: folder_id,
+            id: id,
+            duration: duration
+        }
+    });
+
+    const result = await prisma.folder.update({
+        data : {
+            isShared: true
+        }, 
+        where: {
+            id: folder_id
+        }
+    });
+
+    return shared;
+}
+
+async function getSharedFolderById(id){
+    const folder = await prisma.shared.findFirst({
+        where: {
+            id: id
+        },
+        include: {
+            folder: {
+                include: {
+                    files: true,
+                    user: true
+                }
+            }
+        }
+    });
+
+    return folder;
+}
+
 export {
     createNewFolder,
     updateUserFolder,
@@ -160,5 +209,7 @@ export {
     getUserById,
     getUserByUsername,
     getAllFolders,
-    saveFile
+    saveFile,
+    createSharedFolder,
+    getSharedFolderById
 }

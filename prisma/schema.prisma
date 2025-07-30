@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("CLOUD_DATABASE_URL")
 }
 
 model User {
@@ -16,12 +16,14 @@ model User {
 }
 
 model Folder {
-  id      Int      @id @default(autoincrement())
-  name    String
-  created DateTime @default(now())
-  user_id Int
-  files   File[]
-  user    User     @relation(fields: [user_id], references: [id])
+  id       Int      @id @default(autoincrement())
+  name     String
+  created  DateTime @default(now())
+  user_id  Int
+  isShared Boolean  @default(false)
+  files    File[]
+  user     User     @relation(fields: [user_id], references: [id])
+  shares   Shared[]
 }
 
 model File {
@@ -32,6 +34,14 @@ model File {
   folder_id Int
   path      String
   folder    Folder   @relation(fields: [folder_id], references: [id], onDelete: Cascade)
+}
+
+model Shared {
+  id         String   @id
+  folder_id  Int
+  start_time DateTime @default(now())
+  duration   Int
+  folder     Folder   @relation(fields: [folder_id], references: [id], onDelete: Cascade)
 }
 
 model Session {
