@@ -25,8 +25,11 @@
                         </svg>
                     </div>
                     <div class="info">
-                        <div class="date"> Created on 30 Jan 2025</div>
-                        <div class="size">30mb</div>
+                        <div class="date"> Created on <%=formatDateFileCard(file.created)%>
+                        </div>
+                        <div class="size">
+                            <%=(file.size / (1024 * 1024)).toFixed(2)%>mb
+                        </div>
                     </div>
                     <div class="name-actions">
                         <div class="name">
@@ -40,13 +43,21 @@
                                 <path d="M12 18v-4" />
                                 <path d="M16 18v-6" />
                             </svg>
-                            File 1
+                            <%=file.name%>
                         </div>
                         <div class="actions">
-                            <a href="download/<%=locals.file?.id%>">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line"><path d="M12 17V3"/><path d="m6 11 6 6 6-6"/><path d="M19 21H5"/></svg>
+                            <a
+                                href="https://res.cloudinary.com/<%=cloudName%>/image/upload/fl_attachment/<%=publicId %>" download="<%=file.name%>">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line">
+                                    <path d="M12 17V3" />
+                                    <path d="m6 11 6 6 6-6" />
+                                    <path d="M19 21H5" />
+                                </svg>
                             </a>
-                            <a href="delete/<%=locals.file?.id%>">
+                            <a href="delete/<%=file.id%>">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash">

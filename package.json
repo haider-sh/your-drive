@@ -14,6 +14,8 @@
     "@prisma/client": "^6.12.0",
     "@quixo3/prisma-session-store": "^3.1.13",
     "bcrypt": "^6.0.0",
+    "cloudinary": "^2.7.0",
+    "date-fns": "^4.1.0",
     "dotenv": "^17.2.1",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
@@ -23,6 +25,7 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "pg": "^8.16.3",
-    "prisma": "^6.12.0"
+    "prisma": "^6.12.0",
+    "streamifier": "^0.1.1"
   }
 }

@@ -22,8 +22,22 @@ const validateUser = [
 ];
 
 async function displayHomepage(req, res) {
-    const folders = await getAllFolders();
-    res.render("home", {folders});
+    const [folders, folderSums] = await getAllFolders();
+
+    folders.map(folder => {
+        let folderSum = folderSums.find(folderSum => folderSum.folder_id === folder.id);
+        if (!folderSum) {
+            folder.size = 0;
+            folder.fileCount = 0
+        } else {
+            folder.size = (folderSum._sum.size / (1024 * 1024)).toFixed(2);
+            folder.fileCount = folder._count.files;
+        }
+        return folder;
+    });
+
+    console.log(folders);
+    res.render("home", { folders });
 }
 
 function displayLoginForm(req, res) {
@@ -47,7 +61,7 @@ async function register(req, res, next) {
         let hashedPassword = await bcrypt.hash(req.body.password, 10);
 
         const user = await createNewUser(req.body.username, hashedPassword);
-        console.log(user);        
+        console.log(user);
 
         res.redirect("/login");
     } catch (err) {

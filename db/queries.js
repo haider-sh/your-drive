@@ -39,17 +39,43 @@ async function deleteUserFolder(id) {
     return folder;
 }
 
+async function deleteUserFile(id) {
+    const file = await prisma.file.delete({
+        where: {
+            id: id
+        }
+    });
+
+    return file;
+}
+
 async function getAllFolders() {
-    const folders = await prisma.folder.findMany();
-    return folders;
+    const folders = await prisma.folder.findMany({
+        include: {
+            _count: {
+                select: {
+                    files: true
+                }
+            }
+        }
+    });
+    const folderSums = await prisma.file.groupBy({
+        by: ['folder_id'],
+        _sum: {
+            size: true,
+        },
+    });
+    
+    console.log(folderSums);
+    return [folders, folderSums];
 }
 
 async function getFilesByFolder(folderId) {
     const files = await prisma.file.findMany({
-        include : {
+        include: {
             folder: true
         },
-        where : {
+        where: {
             folder_id: folderId
         }
     });
@@ -76,6 +102,20 @@ async function getFolderById(id) {
 
     return folder;
 }
+
+async function saveFile(name, path, size, folder_id) {
+    const file = await prisma.file.create({
+        data: {
+            name: name,
+            path: path,
+            size: size,
+            folder_id: folder_id
+        }
+    });
+
+    return file;
+}
+
 
 async function createNewUser(username, password) {
     const user = await prisma.user.create({
@@ -111,12 +151,14 @@ async function getUserByUsername(username) {
 export {
     createNewFolder,
     updateUserFolder,
-    deleteUserFolder,   
+    deleteUserFolder,
+    deleteUserFile,
     getFolderById,
     getFileById,
     getFilesByFolder,
     createNewUser,
     getUserById,
     getUserByUsername,
-    getAllFolders
+    getAllFolders,
+    saveFile
 }
