@@ -37,8 +37,11 @@ a {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    border-bottom: 1px solid #461c35;
+    /* border-bottom: 1px solid #461c35; */
     padding-bottom: 5px;
+    padding-top: 10px;
+    background-color: #461c35;
+    color: #f3f1f1;
 
     a {
         font-size: 20px;
@@ -351,7 +354,7 @@ a {
     gap: 15px;
     box-sizing: border-box;
     margin-top: 20px;
-    
+
     .icon {
         display: flex;
         width: 100%;
@@ -413,7 +416,7 @@ a {
 .welcome {
     /* border: 2px solid purple; */
     color: #F9FAF8;
-    background-color: #461c35;
+    background-color: #8d5577;
     width: 100%;
     text-align: center;
 }
@@ -494,7 +497,7 @@ a {
 }
 .card {
     /* border: 2px solid black; */
-    background-color: #8d5577;
+    background-color: #461c35;
     width: 150px;
     height: 150px;
     display: flex;
