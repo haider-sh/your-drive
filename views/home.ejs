@@ -24,9 +24,9 @@
                         New Folder
                     </a>
                     <%}%>
-                        <h2>Folders</h2>
                         <div class="folders">
                             <% if (locals.currentUser) {%>
+                                <h2>Folders</h2>
                                 <% if (!folders.length) {%>
                                     <h3>No folders to show</h3>
                                 <%}%>
@@ -89,7 +89,8 @@
                                     </div>
                                     <%})%>                                        
                                         <%} else {%>
-                                            <h1>Sign in to view your folders.</h1>
+                                            <!-- <h1>Sign in to view your folders.</h1> -->
+                                            <%- include("splash-page") %>
                                             <%}%>
                         </div>
             </div>
