@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles.css">
     <title>YourDrive</title>
+    <script src="/password.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -15,18 +16,24 @@
                 <div>
                     <label for="username">User Name:</label>
                     <input type="text" name="username" id="username" required>
+                    <div class="empty-div" style="width: 14px; height: 14px; border: none;"></div>
                 </div>
                 <div>
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password" required>
+                    <img src="/hide-pass.png" id="password-icon">
                 </div>
                 <div>
-                    <label for="confirmpassword">Confirm Password:</label>
+                    <label for="confirmpassword">Confirm<br> Password:</label>
                     <input type="password" name="confirmpassword" id="confirmpassword" required>
+                    <div class="empty-div" style="width: 14px; height: 14px; border: none;"></div>
                 </div>
                 <button type="submit">Sign Up</button>
             </form>
             <%- include("errors") %>
+        </div>
+        <div class="footer">
+            Made as part of The Odin Project's Web Development Curriculum
         </div>
     </div>
 </body>
