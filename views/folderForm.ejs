@@ -10,7 +10,7 @@
     <div class="container">
         <%- include("header") %>
         <div class="form">
-            <h2><%= type === "create" ? "Create new folder" : "Edit folder name" %></h2>
+            <h2><%= type === "create" ? "Create new folder" : "Enter folder name" %></h2>
             <form action="/folder/<%=type.toLowerCase()%>/<%= locals.folder ? folder.id : null %>" method="post">
                 <div>
                     <label for="foldername">Folder Name:</label>

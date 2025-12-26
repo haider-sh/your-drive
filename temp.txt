@@ -1,0 +1,11 @@
+for haider
+-- remove splash page if u want
+-- added lots of border rules in css file but have been commented out. didnt remove in case need to fix some error in future
+-- .docx/word files why unsupported ("Unsupported ZIP file")
+-- removed footer (i dont like it; add if u want)
+
+resolved/personal
+-- where should password logic be kept? in which folder i mean (public)
+-- learned abt history.back(), clearing file input.
+-- learned about event.preventDefault(), passing event to func
+
